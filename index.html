@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--
+      Yeh basic page setup hai. viewport line se app mobile screen ke hisaab se scale hota hai,
+      isliye same layout phone aur desktop preview dono par clean dikhega.
+    -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - Morning Drop</title>
+
+    <!--
+      Yeh Google Font import hai. Manrope font Lovable preview jaisa soft aur modern look deta hai.
+      Agar future mein font change karna ho to yahin link aur CSS :root font-family update karna.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="home-page">
+    <!--
+      app-shell poori home screen ka main container hai. Iski wajah se app desktop par bhi
+      phone-width ke andar centered rehta hai, exactly mobile app preview jaisa.
+    -->
+    <main class="app-shell" aria-label="Morning Drop home screen">
+      <!--
+        Hero section top ka green dashboard area banata hai. Isme rider greeting,
+        rider ka naam, aur aaj ke completed stops ka progress summary dikhta hai.
+      -->
+      <section class="hero">
+        <div class="hero-inner">
+          <p class="greeting">Good morning,</p>
+          <h1>Aarav <span aria-hidden="true">&#128075;</span></h1>
+
+          <!--
+            Progress panel user ko batata hai ki total 7 stops mein se 3 complete hue.
+            Yellow bar ki actual length CSS mein .progress-fill ke width se control hoti hai.
+          -->
+          <div class="progress-panel" aria-label="Today's progress 3 of 7 stops">
+            <div class="progress-row">
+              <span>Today's progress</span>
+              <strong>3 / 7 stops</strong>
+            </div>
+            <div class="progress-track">
+              <span class="progress-fill"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--
+        Yeh do shortcut cards home screen ke quick actions hain: Pickups aur Deliveries.
+        Abhi static rakhe hain, baad mein inhe clickable page links bana sakte hain.
+      -->
+      <section class="quick-actions" aria-label="Route categories">
+        <article class="action-card">
+          <!--
+            Icon bubble pickup card ko visual identity deta hai.
+            SVG use karne se separate image file maintain karne ki zaroorat nahi hoti.
+          -->
+          <span class="icon-bubble amber" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="img">
+              <path d="m12 3 7.5 4.2v8.6L12 20l-7.5-4.2V7.2L12 3Z" />
+              <path d="M4.8 7.4 12 11.5l7.2-4.1" />
+              <path d="M12 11.5V20" />
+              <path d="m8.2 5.5 7.5 4.2" />
+            </svg>
+          </span>
+          <div>
+            <h2>Pickups</h2>
+            <p>View collection routes</p>
+          </div>
+        </article>
+
+        <article class="action-card">
+          <!--
+            Delivery icon card ke purpose ko quickly communicate karta hai.
+            Color CSS class mint se aata hai, SVG path ko touch karne ki zaroorat nahi.
+          -->
+          <span class="icon-bubble mint" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="img">
+              <path d="M3.7 6.5h10.8v10H3.7z" />
+              <path d="M14.5 10h3.2l2.6 3.1v3.4h-5.8z" />
+              <circle cx="7.2" cy="17.4" r="1.6" />
+              <circle cx="17.3" cy="17.4" r="1.6" />
+            </svg>
+          </span>
+          <div>
+            <h2>Deliveries</h2>
+            <p>View delivery routes</p>
+          </div>
+        </article>
+      </section>
+
+      <!--
+        Recent section mein already completed stops dikh rahe hain. Har stop-card ka structure
+        same hai, taaki future mein data/backend se cards generate karna easy ho.
+      -->
+      <section class="route-section">
+        <h2 class="section-title">Recent</h2>
+        <article class="stop-card">
+          <!--
+            Status icon card ke left side par quick state dikhata hai.
+            Checkmark means yeh stop already done hai.
+          -->
+          <div class="status-icon done" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="m6.2 12.4 3.4 3.4 8.2-8.2" />
+            </svg>
+          </div>
+          <div class="stop-content">
+            <!--
+              Stop topline card ka summary row hai: type, status badge aur chevron.
+              Chevron abhi sirf visual hai; later detail page ke liye card clickable ban sakta hai.
+            -->
+            <div class="stop-topline">
+              <p class="stop-type">Delivery</p>
+              <span class="status-pill">Done</span>
+              <span class="chevron" aria-hidden="true">&rsaquo;</span>
+            </div>
+            <h3>Mrs. Gable</h3>
+
+            <!--
+              Meta row stop ka important context dikhata hai: delivery/pickup time aur address.
+              Icons user ko quickly scan karne mein help karte hain.
+            -->
+            <div class="meta-row">
+              <span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="8.5" />
+                  <path d="M12 7.5v5l3.1 1.9" />
+                </svg>
+                07:30 AM
+              </span>
+              <span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 10.3c0 5.2-7 10.2-7 10.2s-7-5-7-10.2a7 7 0 0 1 14 0Z" />
+                  <circle cx="12" cy="10.3" r="2.2" />
+                </svg>
+                12 Willow Lane
+              </span>
+            </div>
+
+            <!--
+              Items list us stop ke products aur quantity show karti hai.
+              Abhi checkboxes sirf visual hain; later JS se actual checklist behavior add kar sakte hain.
+            -->
+            <ul class="items-list">
+              <li>
+                <span class="fake-check disabled"></span>
+                <span>Full Cream Milk</span>
+                <strong>1 L</strong>
+              </li>
+              <li>
+                <span class="fake-check disabled"></span>
+                <span>Curd</span>
+                <strong>500 g</strong>
+              </li>
+            </ul>
+            <p class="maps-label">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 3 10 14" />
+                <path d="m21 3-7 18-4-7-7-4 18-7Z" />
+              </svg>
+              Open route in Maps
+            </p>
+          </div>
+        </article>
+
+        <article class="stop-card">
+          <div class="status-icon pickup-done" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="m6.2 12.4 3.4 3.4 8.2-8.2" />
+            </svg>
+          </div>
+          <div class="stop-content">
+            <div class="stop-topline">
+              <p class="stop-type">Pickup</p>
+              <span class="status-pill">Done</span>
+              <span class="chevron" aria-hidden="true">&rsaquo;</span>
+            </div>
+            <h3>Sunny Meadow Farm</h3>
+            <div class="meta-row">
+              <span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="8.5" />
+                  <path d="M12 7.5v5l3.1 1.9" />
+                </svg>
+                06:55 AM
+              </span>
+              <span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 10.3c0 5.2-7 10.2-7 10.2s-7-5-7-10.2a7 7 0 0 1 14 0Z" />
+                  <circle cx="12" cy="10.3" r="2.2" />
+                </svg>
+                5 Greenfield Ln
+              </span>
+            </div>
+            <ul class="items-list">
+              <li>
+                <span class="fake-check disabled"></span>
+                <span>Buffalo Milk</span>
+                <strong>12 L</strong>
+              </li>
+              <li>
+                <span class="fake-check disabled"></span>
+                <span>Paneer</span>
+                <strong>3 kg</strong>
+              </li>
+            </ul>
+            <p class="maps-label">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 3 10 14" />
+                <path d="m21 3-7 18-4-7-7-4 18-7Z" />
+              </svg>
+              Open route in Maps
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <!--
+        Up next section rider ko next pending/in-progress stop dikhata hai.
+        Yeh home screen ka action-focused part hai jahan se rider next task samjhega.
+      -->
+      <section class="route-section up-next">
+        <div class="section-heading-row">
+          <h2 class="section-title">Up next</h2>
+          <span class="view-all">View all</span>
+        </div>
+
+        <article class="stop-card">
+          <div class="status-icon progress" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 5v7l4.2 2.5" />
+              <circle cx="12" cy="12" r="8.2" />
+            </svg>
+          </div>
+          <div class="stop-content">
+            <div class="stop-topline">
+              <p class="stop-type">Delivery</p>
+              <span class="status-pill progress-pill">In progress</span>
+              <span class="chevron" aria-hidden="true">&rsaquo;</span>
+            </div>
+            <h3>Mr. Henderson</h3>
+            <div class="meta-row">
+              <span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="8.5" />
+                  <path d="M12 7.5v5l3.1 1.9" />
+                </svg>
+                08:00 AM
+              </span>
+              <span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 10.3c0 5.2-7 10.2-7 10.2s-7-5-7-10.2a7 7 0 0 1 14 0Z" />
+                  <circle cx="12" cy="10.3" r="2.2" />
+                </svg>
+                4 Blue Jay Ave
+              </span>
+            </div>
+            <ul class="items-list">
+              <li>
+                <span class="fake-check"></span>
+                <span>Skim Milk</span>
+                <strong>2 L</strong>
+              </li>
+              <li>
+                <span class="fake-check"></span>
+                <span>Paneer</span>
+                <strong>250 g</strong>
+              </li>
+            </ul>
+            <p class="maps-label">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 3 10 14" />
+                <path d="m21 3-7 18-4-7-7-4 18-7Z" />
+              </svg>
+              Open route in Maps
+            </p>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <!--
+      Bottom navigation app ke main tabs dikhata hai: Home, Pickup, Deliveries, Profile.
+      Ab yeh anchor links hain, isliye user navbar se pages ke beech move kar sakta hai.
+    -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="nav-item active" href="index.html">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m4 10.5 8-6.5 8 6.5v8.8a1.7 1.7 0 0 1-1.7 1.7h-4.1v-6.1H9.8V21H5.7A1.7 1.7 0 0 1 4 19.3v-8.8Z" />
+        </svg>
+        Home
+      </a>
+      <a class="nav-item" href="pickup.html">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m12 3 7.5 4.2v8.6L12 20l-7.5-4.2V7.2L12 3Z" />
+          <path d="M4.8 7.4 12 11.5l7.2-4.1" />
+          <path d="M12 11.5V20" />
+        </svg>
+        Pickup
+      </a>
+      <a class="nav-item" href="deliveries.html">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3.7 6.5h10.8v10H3.7z" />
+          <path d="M14.5 10h3.2l2.6 3.1v3.4h-5.8z" />
+          <circle cx="7.2" cy="17.4" r="1.6" />
+          <circle cx="17.3" cy="17.4" r="1.6" />
+        </svg>
+        Deliveries
+      </a>
+      <a class="nav-item" href="profile.html">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="8" r="3.6" />
+          <path d="M5.5 20c.9-3.6 3.2-5.4 6.5-5.4s5.6 1.8 6.5 5.4" />
+        </svg>
+        Profile
+      </a>
+    </nav>
+
+    <!--
+      JS file future interactions ke liye linked hai. Navbar links normal HTML anchors se work karte hain.
+    -->
+    <script src="script.js"></script>
+  </body>
+</html>

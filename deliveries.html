@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--
+      Deliveries page bhi same mobile-first setup use karta hai.
+      Isse Home, Pickup aur Deliveries pages ek hi app ka part lagte hain.
+    -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deliveries - Morning Drop</title>
+
+    <!--
+      Same Manrope font yahan bhi use ho raha hai taaki typography poori app mein consistent rahe.
+      Agar app ka font later change karna ho to sab pages ke font links ko same update karna.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!--
+      app-shell mobile canvas maintain karta hai. page-shell top spacing deta hai
+      kyunki is screen par Home jaisa green hero header nahi hai.
+    -->
+    <main class="app-shell page-shell" aria-label="Morning Drop deliveries screen">
+      <!--
+        Page header user ko batata hai ki woh customer delivery route par hai.
+        Subtitle mein total houses aur already delivered count quick summary ke form mein hai.
+      -->
+      <header class="page-header">
+        <p class="page-kicker">Today's Deliveries</p>
+        <h1 class="page-title">Customer Drops</h1>
+        <p class="page-subtitle">4 houses · 1 delivered</p>
+      </header>
+
+      <!--
+        Delivery stats strip route ka high-level count dikhata hai:
+        total stops, done stops aur pending stops. Yeh rider ko workload instantly batata hai.
+      -->
+      <section class="stats-grid" aria-label="Delivery progress summary">
+        <article class="stat-card">
+          <strong>4</strong>
+          <span>Total</span>
+        </article>
+        <article class="stat-card">
+          <strong>1</strong>
+          <span>Done</span>
+        </article>
+        <article class="stat-card">
+          <strong>3</strong>
+          <span>Pending</span>
+        </article>
+      </section>
+
+      <!--
+        Still to deliver panel pending products ka total snapshot dikhata hai.
+        Backend aane par yeh values remaining delivery stops se calculate ho sakti hain.
+      -->
+      <section class="summary-panel" aria-label="Still to deliver">
+        <h2>Still to deliver</h2>
+        <div class="summary-grid">
+          <article class="summary-item">
+            <span>Skim Milk</span>
+            <strong>2</strong>
+          </article>
+          <article class="summary-item">
+            <span>Paneer</span>
+            <strong>250</strong>
+          </article>
+          <article class="summary-item">
+            <span>Buffalo Milk</span>
+            <strong>1</strong>
+          </article>
+          <article class="summary-item">
+            <span>Curd</span>
+            <strong>1</strong>
+          </article>
+          <article class="summary-item">
+            <span>Full Cream Milk</span>
+            <strong>10</strong>
+          </article>
+          <article class="summary-item">
+            <span>Cream</span>
+            <strong>2</strong>
+          </article>
+        </div>
+      </section>
+
+      <!--
+        Coming up section pending/in-progress deliveries ko route order mein list karta hai.
+        Same stop-card component reuse ho raha hai, taaki future data rendering simple rahe.
+      -->
+      <section class="route-section">
+        <h2 class="section-title">Coming up</h2>
+
+        <article class="stop-card">
+          <div class="status-icon progress" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 5v7l4.2 2.5" />
+              <circle cx="12" cy="12" r="8.2" />
+            </svg>
+          </div>
+          <div class="stop-content">
+            <div class="stop-topline">
+              <p class="stop-type">Delivery</p>
+              <span class="status-pill progress-pill">In progress</span>
+              <span class="chevron" aria-hidden="true">&rsaquo;</span>
+            </div>
+            <h3>Mr. Henderson</h3>
+            <div class="meta-row">
+              <span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="8.5" />
+                  <path d="M12 7.5v5l3.1 1.9" />
+                </svg>
+                08:00 AM
+              </span>
+              <span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 10.3c0 5.2-7 10.2-7 10.2s-7-5-7-10.2a7 7 0 0 1 14 0Z" />
+                  <circle cx="12" cy="10.3" r="2.2" />
+                </svg>
+                4 Blue Jay Ave
+              </span>
+            </div>
+            <ul class="items-list">
+              <li>
+                <span class="fake-check"></span>
+                <span>Skim Milk</span>
+                <strong>2 L</strong>
+              </li>
+              <li>
+                <span class="fake-check"></span>
+                <span>Paneer</span>
+                <strong>250 g</strong>
+              </li>
+            </ul>
+            <p class="maps-label">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 3 10 14" />
+                <path d="m21 3-7 18-4-7-7-4 18-7Z" />
+              </svg>
+              Open route in Maps
+            </p>
+          </div>
+        </article>
+
+        <article class="stop-card">
+          <div class="status-icon progress" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 5v7l4.2 2.5" />
+              <circle cx="12" cy="12" r="8.2" />
+            </svg>
+          </div>
+          <div class="stop-content">
+            <div class="stop-topline">
+              <p class="stop-type">Delivery</p>
+              <span class="status-pill progress-pill">Upcoming</span>
+              <span class="chevron" aria-hidden="true">&rsaquo;</span>
+            </div>
+            <h3>Anita Sharma</h3>
+            <div class="meta-row">
+              <span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="8.5" />
+                  <path d="M12 7.5v5l3.1 1.9" />
+                </svg>
+                08:25 AM
+              </span>
+              <span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 10.3c0 5.2-7 10.2-7 10.2s-7-5-7-10.2a7 7 0 0 1 14 0Z" />
+                  <circle cx="12" cy="10.3" r="2.2" />
+                </svg>
+                21 Rosewood Dr
+              </span>
+            </div>
+            <ul class="items-list">
+              <li>
+                <span class="fake-check"></span>
+                <span>Buffalo Milk</span>
+                <strong>1 L</strong>
+              </li>
+              <li>
+                <span class="fake-check"></span>
+                <span>Curd</span>
+                <strong>1 kg</strong>
+              </li>
+            </ul>
+            <p class="maps-label">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 3 10 14" />
+                <path d="m21 3-7 18-4-7-7-4 18-7Z" />
+              </svg>
+              Open route in Maps
+            </p>
+          </div>
+        </article>
+
+        <article class="stop-card">
+          <div class="status-icon progress" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 5v7l4.2 2.5" />
+              <circle cx="12" cy="12" r="8.2" />
+            </svg>
+          </div>
+          <div class="stop-content">
+            <div class="stop-topline">
+              <p class="stop-type">Delivery</p>
+              <span class="status-pill progress-pill">Upcoming</span>
+              <span class="chevron" aria-hidden="true">&rsaquo;</span>
+            </div>
+            <h3>Cafe Aurora</h3>
+            <div class="meta-row">
+              <span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="8.5" />
+                  <path d="M12 7.5v5l3.1 1.9" />
+                </svg>
+                09:40 AM
+              </span>
+              <span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 10.3c0 5.2-7 10.2-7 10.2s-7-5-7-10.2a7 7 0 0 1 14 0Z" />
+                  <circle cx="12" cy="10.3" r="2.2" />
+                </svg>
+                3 High Street
+              </span>
+            </div>
+            <ul class="items-list">
+              <li>
+                <span class="fake-check"></span>
+                <span>Full Cream Milk</span>
+                <strong>10 L</strong>
+              </li>
+              <li>
+                <span class="fake-check"></span>
+                <span>Cream</span>
+                <strong>2 L</strong>
+              </li>
+            </ul>
+            <p class="maps-label">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 3 10 14" />
+                <path d="m21 3-7 18-4-7-7-4 18-7Z" />
+              </svg>
+              Open route in Maps
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <!--
+        Delivered section completed customer drops ko separate rakhta hai.
+        Isse rider pending kaam aur completed history ko easily distinguish kar sakta hai.
+      -->
+      <section class="route-section">
+        <h2 class="section-title">Delivered</h2>
+
+        <article class="stop-card">
+          <div class="status-icon done" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="m6.2 12.4 3.4 3.4 8.2-8.2" />
+            </svg>
+          </div>
+          <div class="stop-content">
+            <div class="stop-topline">
+              <p class="stop-type">Delivery</p>
+              <span class="status-pill">Done</span>
+              <span class="chevron" aria-hidden="true">&rsaquo;</span>
+            </div>
+            <h3>Mrs. Gable</h3>
+            <div class="meta-row">
+              <span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="8.5" />
+                  <path d="M12 7.5v5l3.1 1.9" />
+                </svg>
+                07:30 AM
+              </span>
+              <span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 10.3c0 5.2-7 10.2-7 10.2s-7-5-7-10.2a7 7 0 0 1 14 0Z" />
+                  <circle cx="12" cy="10.3" r="2.2" />
+                </svg>
+                12 Willow Lane
+              </span>
+            </div>
+            <ul class="items-list">
+              <li>
+                <span class="fake-check disabled"></span>
+                <span>Full Cream Milk</span>
+                <strong>1 L</strong>
+              </li>
+              <li>
+                <span class="fake-check disabled"></span>
+                <span>Curd</span>
+                <strong>500 g</strong>
+              </li>
+            </ul>
+            <p class="maps-label">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 3 10 14" />
+                <path d="m21 3-7 18-4-7-7-4 18-7Z" />
+              </svg>
+              Open route in Maps
+            </p>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <!--
+      Bottom nav same app navigation dikhata hai. Deliveries active hai,
+      aur baaki tabs real links hain taaki pages ke beech move kar sakein.
+    -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="nav-item" href="index.html">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m4 10.5 8-6.5 8 6.5v8.8a1.7 1.7 0 0 1-1.7 1.7h-4.1v-6.1H9.8V21H5.7A1.7 1.7 0 0 1 4 19.3v-8.8Z" />
+        </svg>
+        Home
+      </a>
+      <a class="nav-item" href="pickup.html">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m12 3 7.5 4.2v8.6L12 20l-7.5-4.2V7.2L12 3Z" />
+          <path d="M4.8 7.4 12 11.5l7.2-4.1" />
+          <path d="M12 11.5V20" />
+        </svg>
+        Pickup
+      </a>
+      <a class="nav-item active" href="deliveries.html">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3.7 6.5h10.8v10H3.7z" />
+          <path d="M14.5 10h3.2l2.6 3.1v3.4h-5.8z" />
+          <circle cx="7.2" cy="17.4" r="1.6" />
+          <circle cx="17.3" cy="17.4" r="1.6" />
+        </svg>
+        Deliveries
+      </a>
+      <a class="nav-item" href="profile.html">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="8" r="3.6" />
+          <path d="M5.5 20c.9-3.6 3.2-5.4 6.5-5.4s5.6 1.8 6.5 5.4" />
+        </svg>
+        Profile
+      </a>
+    </nav>
+
+    <script src="script.js"></script>
+  </body>
+</html>

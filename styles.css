@@ -1,0 +1,1031 @@
+:root {
+  /*
+    Theme tokens app ke design ka central control room hain.
+    Agar future mein color palette, card shadow, ya brand green change karna ho,
+    to mostly yahin variables update karne se poori app ka look change ho jayega.
+  */
+  --bg: #effbf6;
+  --surface: #ffffff;
+  --ink: #111f1c;
+  --muted: #6b7774;
+  --line: #dbe9e5;
+  --teal: #078f74;
+  --teal-deep: #06856c;
+  --teal-soft: #c8f4e8;
+  --amber: #f6b419;
+  --amber-soft: #fff0c8;
+  --shadow: 0 8px 18px rgba(19, 76, 65, 0.11);
+  font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/*
+  Yeh reset ensure karta hai ki padding/border element ke total size ke andar count ho.
+  Isse cards aur nav ki width predictable rehti hai jab hum spacing edit karte hain.
+*/
+* {
+  box-sizing: border-box;
+}
+
+/*
+  Body poori app ka base background aur text color set karta hai.
+  Mint background Lovable preview wala light fresh delivery-app feel create karta hai.
+*/
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+/*
+  Saare inline SVG icons ke liye common style. Stroke currentColor use karta hai,
+  isliye icon ka color parent class se control hota hai, alag-alag SVG edit nahi karne padte.
+*/
+svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.9;
+}
+
+/*
+  app-shell app ka mobile canvas hai. Width max 672px rakhi hai taaki desktop par bhi
+  app stretched website jaisa na lage, balki mobile app preview jaisa centered dikhe.
+*/
+.app-shell {
+  width: min(100%, 672px);
+  margin: 0 auto;
+  padding: 0 18px 104px;
+}
+
+/*
+  Hero top green dashboard block hai. Negative side margin se yeh app-shell padding ke
+  bahar tak spread hota hai, aur bottom rounded corners preview jaisa shape dete hain.
+*/
+.hero {
+  margin: 0 -18px;
+  background: var(--teal);
+  border-radius: 0 0 22px 22px;
+}
+
+/*
+  Hero inner content ke around breathing space deta hai.
+  Agar top header zyada tall/compact chahiye ho to padding yahin change karna.
+*/
+.hero-inner {
+  padding: 26px 18px 24px;
+}
+
+/*
+  Greeting rider name ke upar small supportive text hai.
+  Iska white transparent color hierarchy banata hai: greeting secondary, name primary.
+*/
+.greeting {
+  margin: 0 0 2px;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/*
+  H1 rider ka naam show karta hai. Font weight high rakha hai taaki dashboard mein
+  user identity instantly visible ho.
+*/
+h1 {
+  margin: 0 0 21px;
+  color: #fff;
+  font-size: 24px;
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+/*
+  Progress panel hero ke andar translucent card effect banata hai.
+  Yeh aaj ke route progress ko header ke andar neatly group karta hai.
+*/
+.progress-panel {
+  padding: 17px 16px 18px;
+  border-radius: 18px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/*
+  Progress row left side label aur right side completed-stop count ko align karta hai.
+  Space-between se count hamesha right edge par rahega.
+*/
+.progress-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.progress-row strong {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+/*
+  Progress track yellow fill ke peeche ka base rail hai.
+  Rounded pill shape se progress bar app ke soft design system ke saath match karta hai.
+*/
+.progress-track {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.19);
+}
+
+/*
+  Progress fill actual completed progress dikhaata hai. 3/7 roughly 43% hota hai,
+  isliye width 43% hai. Backend data aane par yeh value JS se dynamic ho sakti hai.
+*/
+.progress-fill {
+  display: block;
+  width: 43%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--amber);
+}
+
+/*
+  Quick actions grid Pickups aur Deliveries cards ko side-by-side arrange karta hai.
+  Mobile par equal columns se dono cards balanced dikhte hain.
+*/
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/*
+  Yeh shared card surface hai jo shortcut cards aur stop cards dono ko same white card,
+  border aur soft shadow deta hai. Isse app ka visual system consistent rehta hai.
+*/
+.action-card,
+.stop-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+/*
+  Action card ke andar icon upar aur text neeche arrange hota hai.
+  Min-height fixed hai taaki dono shortcut cards same height ke dikhein.
+*/
+.action-card {
+  min-height: 122px;
+  padding: 17px 16px;
+  border-radius: 17px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+}
+
+/*
+  Icon bubble small circular background banata hai. Yeh card ko scan-friendly banata hai,
+  taaki user pickup/delivery type ko text padhe bina bhi pehchaan sake.
+*/
+.icon-bubble {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.icon-bubble svg {
+  width: 22px;
+  height: 22px;
+}
+
+/*
+  Yeh icon bubble color variants hain. Amber pickup ko warm collection feel deta hai,
+  mint delivery ko green app theme ke saath connect karta hai.
+*/
+.amber {
+  color: #5a3d05;
+  background: var(--amber-soft);
+}
+
+.mint {
+  color: var(--teal-deep);
+  background: var(--teal-soft);
+}
+
+/*
+  Shortcut card text styling title ko bold aur subtitle ko muted banata hai.
+  Isse card mein action name prominent aur description secondary rehta hai.
+*/
+.action-card h2 {
+  margin: 0 0 2px;
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.action-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+/*
+  Route section har major content block ke beech vertical gap deta hai,
+  jaise Recent aur Up next sections ek doosre se clearly separate dikhein.
+*/
+.route-section {
+  margin-top: 26px;
+}
+
+/*
+  Section title list ke label hain. Bold weight se user ko clear grouping milti hai:
+  kaunse stops recent hain aur kaunse upcoming.
+*/
+.section-title {
+  margin: 0 0 14px;
+  font-size: 19px;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+/*
+  Section heading row title aur right-side action label ko ek line mein align karta hai.
+  Up next mein "View all" isi layout ki wajah se right side par dikhta hai.
+*/
+.section-heading-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/*
+  View all abhi sirf static text hai, but color aur weight se clickable jaisa signal deta hai.
+  Jab Deliveries page banega, isi element ko real link/button mein convert kar sakte hain.
+*/
+.view-all {
+  color: var(--teal);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+/*
+  Stop card individual route stop ka full UI block hai.
+  Grid layout left mein status icon aur right mein details rakhkar card ko easy-to-scan banata hai.
+*/
+.stop-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 12px;
+  margin-bottom: 13px;
+  padding: 16px 15px 17px;
+  border-radius: 18px;
+}
+
+/*
+  Status icon stop ka current state visually show karta hai, jaise done ya in progress.
+  Circular pastel background preview ke soft mobile app style ko maintain karta hai.
+*/
+.status-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--teal);
+  background: var(--teal-soft);
+}
+
+.status-icon svg {
+  width: 21px;
+  height: 21px;
+  stroke-width: 2.2;
+}
+
+/*
+  Yeh status icon variants hain. Pickup done ke liye amber tone aur in-progress ke liye
+  warm yellow use kiya hai, taaki states visually different dikhein.
+*/
+.pickup-done {
+  color: #1d1906;
+  background: var(--amber-soft);
+}
+
+.progress {
+  color: #8d6400;
+  background: #fff3ce;
+}
+
+/*
+  Stop content ko min-width 0 dena important hai. Isse long customer names/address
+  card ko screen se bahar push nahi karte aur text wrap ho sakta hai.
+*/
+.stop-content {
+  min-width: 0;
+}
+
+/*
+  Stop top line mein route type, status badge aur chevron ek row mein aate hain.
+  Yeh card ka quick summary header hai.
+*/
+.stop-topline {
+  display: flex;
+  align-items: center;
+  min-height: 23px;
+  gap: 8px;
+}
+
+/*
+  Stop type uppercase small label hai. Yeh user ko batata hai ki card delivery hai ya pickup,
+  without competing with customer/farm name.
+*/
+.stop-type {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+
+/*
+  Status pill current state ko compact badge ke form mein dikhata hai.
+  Done badge green hai kyunki completed state positive/finished feel deti hai.
+*/
+.status-pill {
+  margin-left: auto;
+  padding: 3px 9px;
+  border: 1px solid #a9e1d0;
+  border-radius: 999px;
+  color: var(--teal-deep);
+  background: #dcfaef;
+  font-size: 10px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+/*
+  In-progress badge ka color Done se different hai, taaki rider ko active stop
+  quickly identify ho jaye.
+*/
+.progress-pill {
+  color: #845d00;
+  border-color: #f3d68b;
+  background: #fff5d8;
+}
+
+/*
+  Chevron preview jaisa detail-page affordance deta hai, par abhi visual-only hai.
+  Jab stop detail page banega, card click behavior yahin se meaningful hoga.
+*/
+.chevron {
+  color: #52605d;
+  font-size: 26px;
+  line-height: 1;
+}
+
+/*
+  Stop card h3 customer ya farm ka naam hai. Yeh card ka primary information point hai,
+  isliye bold aur readable size mein rakha hai.
+*/
+.stop-card h3 {
+  margin: 3px 0 7px;
+  overflow-wrap: anywhere;
+  font-size: 16px;
+  line-height: 1.25;
+  font-weight: 800;
+}
+
+/*
+  Meta row time aur address ko compact line mein dikhata hai.
+  flex-wrap ki wajah se chhoti screens par overlap nahi hota, line break ho jaata hai.
+*/
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 13px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.meta-row span,
+.maps-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.meta-row svg {
+  width: 12px;
+  height: 12px;
+  stroke-width: 1.8;
+}
+
+/*
+  Items list stop ke andar deliver/collect hone wale products show karti hai.
+  Grid gap aur margin se checklist card content ke saath balanced dikhti hai.
+*/
+.items-list {
+  position: relative;
+  display: grid;
+  gap: 7px;
+  margin: 15px 0 12px;
+  padding: 0;
+  list-style: none;
+}
+
+/*
+  Items list ki pale vertical line checklist ko grouped feel deti hai,
+  jaise preview mein products ek connected mini-list ke form mein dikhte hain.
+*/
+.items-list::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 2px;
+  bottom: 2px;
+  width: 1px;
+  background: #d9eee8;
+}
+
+/*
+  Har product row 3 columns use karti hai: fake checkbox, product name, quantity.
+  Quantity right aligned hai taaki rider amounts quickly compare kar sake.
+*/
+.items-list li {
+  display: grid;
+  grid-template-columns: 16px 1fr auto;
+  align-items: center;
+  gap: 9px;
+  min-height: 18px;
+  color: #495550;
+  font-size: 13px;
+}
+
+.items-list strong {
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+/*
+  Fake checkbox abhi sirf design element hai, actual input nahi.
+  Later jab task completion add karenge, ise real checkbox/button behavior de sakte hain.
+*/
+.fake-check {
+  position: relative;
+  z-index: 1;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid #cbd8d4;
+  border-radius: 3px;
+  background: #fff;
+}
+
+/*
+  Disabled checkbox completed stops ke products ko inactive/muted feel deta hai.
+  Isse user samajhta hai ki yeh stop already done hai.
+*/
+.fake-check.disabled {
+  background: #f7faf9;
+}
+
+/*
+  Maps label route action ka placeholder hai. Abhi static hai, but later isko
+  Google Maps deep link se connect karenge.
+*/
+.maps-label {
+  margin: 0;
+  color: var(--teal-deep);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.maps-label svg {
+  width: 14px;
+  height: 14px;
+}
+
+/*
+  Bottom nav fixed hai, isliye route list scroll karte waqt bhi main tabs visible rehte hain.
+  Padding bottom app-shell mein extra diya gaya hai taaki content nav ke peeche hide na ho.
+*/
+.bottom-nav {
+  position: fixed;
+  z-index: 10;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: min(100%, 672px);
+  height: 70px;
+  margin: 0 auto;
+  padding: 8px 10px 10px;
+  border-top: 1px solid #e4eeea;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 -8px 22px rgba(25, 70, 60, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+/*
+  Nav item icon aur label ko vertical stack mein rakhta hai.
+  Yeh ab anchor links hain, isliye text-decoration remove karke app-tab jaisa look maintain kiya hai.
+*/
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 0;
+  color: #697470;
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav-item svg {
+  width: 21px;
+  height: 21px;
+}
+
+/*
+  Active nav item current page highlight karta hai.
+  Abhi Home active hai; Pickup/Deliveries/Profile pages banne par active class switch hogi.
+*/
+.nav-item.active {
+  color: var(--teal);
+}
+
+/*
+  Navbar hover/focus state clickable tabs ko clear feedback deta hai.
+  Color active Home/Pickup/Deliveries/Profile ke same teal family mein rakha hai.
+*/
+.nav-item:hover,
+.nav-item:focus-visible {
+  color: var(--teal);
+}
+
+.nav-item:focus-visible {
+  outline: 2px solid var(--teal-soft);
+  outline-offset: -4px;
+  border-radius: 12px;
+}
+
+/*
+  Home page card boundary Lovable preview jaisi subtle 1px outline deta hai.
+  Hover par border thoda teal/amber feel leta hai aur card halka lift hota hai,
+  lekin card ki actual width/layout same rehti hai.
+*/
+.home-page .action-card,
+.home-page .stop-card {
+  border-width: 1px;
+  border-color: #d6e7e2;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.home-page .action-card:hover,
+.home-page .stop-card:hover {
+  border-color: #b8ded3;
+  box-shadow: 0 10px 22px rgba(19, 76, 65, 0.14);
+  transform: translateY(-1px);
+}
+
+.home-page .action-card:first-child:hover {
+  border-color: #f2d88f;
+}
+
+.home-page .maps-label:hover,
+.home-page .view-all:hover {
+  color: #06745f;
+}
+
+/*
+  Pickup page cards ko bhi Home jaisa same Lovable-style 1px boundary aur hover polish milta hai.
+  Scope pickup-page par hai, isliye yeh styling sirf Pickup screen ke summary aur stop cards par apply hoti hai.
+*/
+.pickup-page .summary-panel,
+.pickup-page .stop-card {
+  border-width: 1px;
+  border-color: #d6e7e2;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.pickup-page .summary-panel:hover,
+.pickup-page .stop-card:hover {
+  border-color: #f2d88f;
+  box-shadow: 0 10px 22px rgba(19, 76, 65, 0.14);
+  transform: translateY(-1px);
+}
+
+.pickup-page .maps-label:hover {
+  color: #06745f;
+}
+
+/*
+  page-shell un pages ke liye hai jahan Home jaisa green hero nahi hota.
+  Pickup page mein top se normal spacing chahiye, isliye yeh extra padding deta hai.
+*/
+.page-shell {
+  padding-top: 28px;
+}
+
+/*
+  Page header route-specific screens ka intro area hai.
+  Kicker, title aur subtitle milkar current workflow ka context clear karte hain.
+*/
+.page-header {
+  margin-bottom: 20px;
+}
+
+/*
+  Kicker small label hai jo page category batata hai, jaise Today's Pickups.
+  Green color se yeh app theme se connected lagta hai.
+*/
+.page-kicker {
+  margin: 0 0 4px;
+  color: var(--teal-deep);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+/*
+  Page title Pickup screen ka main heading hai.
+  Home ke h1 se alag class use ki hai taaki white hero style yahan apply na ho.
+*/
+.page-title {
+  margin: 0 0 6px;
+  color: var(--ink);
+  font-size: 30px;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+/*
+  Subtitle route size aur purpose batata hai.
+  Yeh secondary information hai, isliye muted color mein rakha hai.
+*/
+.page-subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/*
+  Summary panel Pickup route ka total collection snapshot dikhata hai.
+  White card surface se yeh route stops se pehle ek clear overview block ban jata hai.
+*/
+.summary-panel {
+  padding: 17px 16px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.summary-panel h2 {
+  margin: 0 0 14px;
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+/*
+  Summary grid total products ko compact chips/cards mein arrange karta hai.
+  auto-fit ki wajah se screen width ke hisaab se columns adjust ho jaate hain.
+*/
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
+  gap: 10px;
+}
+
+/*
+  Summary item product name aur total quantity ko separate hierarchy deta hai.
+  Future backend integration mein yahi blocks dynamic data se render ho sakte hain.
+*/
+.summary-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 46px;
+  padding: 10px 11px;
+  border-radius: 13px;
+  background: #f4fbf8;
+}
+
+.summary-item span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.summary-item strong {
+  color: var(--teal-deep);
+  font-size: 20px;
+  line-height: 1;
+  font-weight: 800;
+}
+
+/*
+  Stats grid Deliveries page ke top counters ko 3 equal columns mein rakhta hai.
+  Yeh route workload ko quickly summarize karta hai: Total, Done, Pending.
+*/
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+/*
+  Stat card individual count ko highlight karta hai.
+  White card surface page ke baaki cards ke saath consistent rehta hai.
+*/
+.stat-card {
+  display: grid;
+  gap: 4px;
+  min-height: 78px;
+  place-items: center;
+  padding: 12px 8px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.stat-card strong {
+  color: var(--teal-deep);
+  font-size: 26px;
+  line-height: 1;
+  font-weight: 800;
+}
+
+.stat-card span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+/*
+  Profile shell profile screen ke content ko thoda compact width feel deta hai.
+  Same app-shell ke andar rehte hue profile blocks neatly stack hote hain.
+*/
+.profile-shell {
+  display: grid;
+  gap: 14px;
+}
+
+/*
+  Profile card rider identity ka hero block hai.
+  Avatar, name, rider ID aur rating ko ek clean white card mein group karta hai.
+*/
+.profile-card {
+  display: grid;
+  grid-template-columns: 58px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 16px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+/*
+  Avatar initials user ko visual identity dete hain bina profile photo asset ke.
+  Agar future mein actual photo add karni ho to isi block ko img se replace kar sakte hain.
+*/
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--teal);
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.profile-main {
+  min-width: 0;
+}
+
+.profile-name {
+  margin-bottom: 5px;
+  font-size: 24px;
+}
+
+/*
+  Rider ID secondary identifier hai. Muted color isliye use kiya hai taaki
+  name primary rahe aur ID supporting info lage.
+*/
+.rider-id {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/*
+  Rating badge rider performance ko compact form mein show karta hai.
+  Star icon aur number ek scan-friendly chip banate hain.
+*/
+.rating-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 9px;
+  border-radius: 999px;
+  color: #8d6400;
+  background: #fff3ce;
+  font-weight: 800;
+}
+
+.rating-badge svg {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+  stroke-width: 1.4;
+}
+
+/*
+  Details panel profile ke operational fields ko group karta hai.
+  Yeh card future mein editable profile/settings data se populate ho sakta hai.
+*/
+.details-panel {
+  padding: 6px 16px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+/*
+  Detail row ek field display karta hai: icon, label aur value.
+  Border separator rows ko readable banata hai without making separate cards.
+*/
+.detail-row {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid #edf4f1;
+}
+
+.detail-row:last-child {
+  border-bottom: 0;
+}
+
+.detail-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--teal-deep);
+  background: #e8faf3;
+}
+
+.detail-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.detail-row p {
+  margin: 0 0 3px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.detail-row strong {
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.25;
+  font-weight: 800;
+}
+
+/*
+  Profile actions Settings aur Log out ko full-width buttons ke form mein dikhate hain.
+  Abhi visual-only hain; future mein JS se actual flow connect kar sakte hain.
+*/
+.profile-actions {
+  display: grid;
+  gap: 10px;
+}
+
+.profile-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  color: var(--ink);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.profile-button svg {
+  width: 18px;
+  height: 18px;
+}
+
+.profile-button.danger {
+  color: #b23b3b;
+}
+
+/*
+  Larger screens ke liye small spacing adjustment hai.
+  App still mobile width mein hi rahega, sirf side padding thoda balanced hota hai.
+*/
+@media (min-width: 720px) {
+  .app-shell {
+    padding-inline: 20px;
+  }
+
+  .hero {
+    margin-inline: -20px;
+  }
+}
+
+/*
+  Small phones ke liye compact spacing. Isse cards screen mein fit rehte hain
+  aur layout cramped ya overflowed nahi dikhta.
+*/
+@media (max-width: 420px) {
+  .app-shell {
+    padding-inline: 16px;
+  }
+
+  .hero {
+    margin-inline: -16px;
+  }
+
+  .quick-actions {
+    gap: 10px;
+  }
+
+  .action-card {
+    min-height: 120px;
+    padding: 16px 14px;
+  }
+
+  .stop-card {
+    grid-template-columns: 42px 1fr;
+    padding: 15px 13px 16px;
+  }
+
+  .status-icon {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+/*
+  Bahut narrow screens ke liye fallback layout. Shortcut cards stack ho jaate hain
+  aur badges wrap kar sakte hain, taaki text overlap na kare.
+*/
+@media (max-width: 340px) {
+  .quick-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .progress-row,
+  .stop-topline {
+    align-items: flex-start;
+  }
+
+  .stop-topline {
+    flex-wrap: wrap;
+  }
+
+  .status-pill {
+    margin-left: 0;
+  }
+}

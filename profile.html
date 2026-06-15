@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--
+      Profile page ka setup baaki screens jaisa hi rakha hai.
+      Same viewport, font aur CSS se poori app ek single consistent product lagti hai.
+    -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile - Morning Drop</title>
+
+    <!--
+      Manrope font rider profile ko bhi same soft app look deta hai.
+      Agar future mein typography badalni ho to sab pages ke font import ko same update karna.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!--
+      app-shell profile content ko same centered mobile width mein rakhta hai.
+      page-shell top spacing deta hai kyunki is page par green hero nahi hai.
+    -->
+    <main class="app-shell page-shell profile-shell" aria-label="Morning Drop profile screen">
+      <!--
+        Profile hero rider ki identity ka main block hai.
+        Initial avatar, rider name, rider ID aur rating ek hi card mein grouped hain.
+      -->
+      <section class="profile-card" aria-label="Rider profile">
+        <div class="avatar" aria-hidden="true">AM</div>
+        <div class="profile-main">
+          <h1 class="page-title profile-name">Aarav Mehta</h1>
+          <p class="rider-id">ID · RID-00284</p>
+        </div>
+        <div class="rating-badge" aria-label="Rating 4.9">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m12 3.5 2.5 5.1 5.6.8-4 3.9.9 5.5-5-2.6-5 2.6.9-5.5-4-3.9 5.6-.8L12 3.5Z" />
+          </svg>
+          <strong>4.9</strong>
+        </div>
+      </section>
+
+      <!--
+        Details panel rider ke operational details show karta hai.
+        Yeh information delivery operations mein useful hoti hai: vehicle, zone, shift, phone.
+      -->
+      <section class="details-panel" aria-label="Rider details">
+        <article class="detail-row">
+          <span class="detail-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M3.7 6.5h10.8v10H3.7z" />
+              <path d="M14.5 10h3.2l2.6 3.1v3.4h-5.8z" />
+              <circle cx="7.2" cy="17.4" r="1.6" />
+              <circle cx="17.3" cy="17.4" r="1.6" />
+            </svg>
+          </span>
+          <div>
+            <p>Vehicle</p>
+            <strong>TN-09 AB 4521</strong>
+          </div>
+        </article>
+
+        <article class="detail-row">
+          <span class="detail-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M19 10.3c0 5.2-7 10.2-7 10.2s-7-5-7-10.2a7 7 0 0 1 14 0Z" />
+              <circle cx="12" cy="10.3" r="2.2" />
+            </svg>
+          </span>
+          <div>
+            <p>Zone</p>
+            <strong>Zone 4 — North Loop</strong>
+          </div>
+        </article>
+
+        <article class="detail-row">
+          <span class="detail-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="8.5" />
+              <path d="M12 7.5v5l3.1 1.9" />
+            </svg>
+          </span>
+          <div>
+            <p>Shift</p>
+            <strong>05:30 AM — 11:00 AM</strong>
+          </div>
+        </article>
+
+        <article class="detail-row">
+          <span class="detail-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M7.1 4.8 9 4.1l2.2 4.4-1.5 1.1c.9 1.8 2.2 3.1 4.1 4.1l1.1-1.5 4.4 2.2-.7 1.9c-.4 1.1-1.4 1.8-2.6 1.7-5.9-.4-10.6-5.1-11-11-.1-1.2.6-2.2 1.7-2.6Z" />
+            </svg>
+          </span>
+          <div>
+            <p>Phone</p>
+            <strong>+91 98765 43210</strong>
+          </div>
+        </article>
+      </section>
+
+      <!--
+        Action buttons abhi visual-only hain. Later Settings screen aur logout flow add karte waqt
+        in buttons ko actual click behavior diya ja sakta hai.
+      -->
+      <section class="profile-actions" aria-label="Profile actions">
+        <button type="button" class="profile-button">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 15.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Z" />
+            <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 0 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6V21a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1A2 2 0 0 1 4.1 17l.1-.1A1.7 1.7 0 0 0 4.5 15a1.7 1.7 0 0 0-1.6-1H2.8a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.6-1.1A1.7 1.7 0 0 0 4.2 7l-.1-.1A2 2 0 0 1 6.9 4l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.6V2.8a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1.1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1A2 2 0 0 1 19.9 7l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.6 1h.1a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.7 1Z" />
+          </svg>
+          Settings
+        </button>
+        <button type="button" class="profile-button danger">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M9 21H5.7A1.7 1.7 0 0 1 4 19.3V4.7A1.7 1.7 0 0 1 5.7 3H9" />
+            <path d="M16 17l5-5-5-5" />
+            <path d="M21 12H9" />
+          </svg>
+          Log out
+        </button>
+      </section>
+    </main>
+
+    <!--
+      Bottom nav mein Profile active hai. Yeh links app ke chaar screens ko connect karte hain.
+      Profile ke Settings/Log out buttons abhi visual-only hain.
+    -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="nav-item" href="index.html">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m4 10.5 8-6.5 8 6.5v8.8a1.7 1.7 0 0 1-1.7 1.7h-4.1v-6.1H9.8V21H5.7A1.7 1.7 0 0 1 4 19.3v-8.8Z" />
+        </svg>
+        Home
+      </a>
+      <a class="nav-item" href="pickup.html">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m12 3 7.5 4.2v8.6L12 20l-7.5-4.2V7.2L12 3Z" />
+          <path d="M4.8 7.4 12 11.5l7.2-4.1" />
+          <path d="M12 11.5V20" />
+        </svg>
+        Pickup
+      </a>
+      <a class="nav-item" href="deliveries.html">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3.7 6.5h10.8v10H3.7z" />
+          <path d="M14.5 10h3.2l2.6 3.1v3.4h-5.8z" />
+          <circle cx="7.2" cy="17.4" r="1.6" />
+          <circle cx="17.3" cy="17.4" r="1.6" />
+        </svg>
+        Deliveries
+      </a>
+      <a class="nav-item active" href="profile.html">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="8" r="3.6" />
+          <path d="M5.5 20c.9-3.6 3.2-5.4 6.5-5.4s5.6 1.8 6.5 5.4" />
+        </svg>
+        Profile
+      </a>
+    </nav>
+
+    <script src="script.js"></script>
+  </body>
+</html>
