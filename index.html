@@ -54,10 +54,10 @@
 
       <!--
         Yeh do shortcut cards home screen ke quick actions hain: Pickups aur Deliveries.
-        Abhi static rakhe hain, baad mein inhe clickable page links bana sakte hain.
+        Dono cards navbar wale respective pages par le jaate hain.
       -->
       <section class="quick-actions" aria-label="Route categories">
-        <article class="action-card">
+        <a class="action-card" href="pickup.html" data-route="pickup.html" aria-label="Open Pickup page">
           <!--
             Icon bubble pickup card ko visual identity deta hai.
             SVG use karne se separate image file maintain karne ki zaroorat nahi hoti.
@@ -74,9 +74,9 @@
             <h2>Pickups</h2>
             <p>View collection routes</p>
           </div>
-        </article>
+        </a>
 
-        <article class="action-card">
+        <a class="action-card" href="deliveries.html" data-route="deliveries.html" aria-label="Open Deliveries page">
           <!--
             Delivery icon card ke purpose ko quickly communicate karta hai.
             Color CSS class mint se aata hai, SVG path ko touch karne ki zaroorat nahi.
@@ -93,7 +93,7 @@
             <h2>Deliveries</h2>
             <p>View delivery routes</p>
           </div>
-        </article>
+        </a>
       </section>
 
       <!--
@@ -221,6 +221,7 @@
             </p>
           </div>
         </article>
+
       </section>
 
       <!--
@@ -230,7 +231,7 @@
       <section class="route-section up-next">
         <div class="section-heading-row">
           <h2 class="section-title">Up next</h2>
-          <span class="view-all">View all</span>
+          <a class="view-all" href="deliveries.html">View all</a>
         </div>
 
         <article class="stop-card">
@@ -284,11 +285,170 @@
             </p>
           </div>
         </article>
+
+        <article class="stop-card">
+          <div class="status-icon delivery-upcoming" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 19V5" />
+              <path d="m6.5 10.5 5.5-5.5 5.5 5.5" />
+              <path d="M5 19h14" />
+            </svg>
+          </div>
+          <div class="stop-content">
+            <div class="stop-topline">
+              <p class="stop-type">Delivery</p>
+              <span class="status-pill">Upcoming</span>
+              <span class="chevron" aria-hidden="true">&rsaquo;</span>
+            </div>
+            <h3>Anita Sharma</h3>
+            <div class="meta-row">
+              <span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="8.5" />
+                  <path d="M12 7.5v5l3.1 1.9" />
+                </svg>
+                08:25 AM
+              </span>
+              <span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 10.3c0 5.2-7 10.2-7 10.2s-7-5-7-10.2a7 7 0 0 1 14 0Z" />
+                  <circle cx="12" cy="10.3" r="2.2" />
+                </svg>
+                21 Rosewood Dr
+              </span>
+            </div>
+            <ul class="items-list">
+              <li>
+                <span class="fake-check"></span>
+                <span>Buffalo Milk</span>
+                <strong>1 L</strong>
+              </li>
+              <li>
+                <span class="fake-check"></span>
+                <span>Curd</span>
+                <strong>1 kg</strong>
+              </li>
+            </ul>
+            <p class="maps-label">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 3 10 14" />
+                <path d="m21 3-7 18-4-7-7-4 18-7Z" />
+              </svg>
+              Open route in Maps
+            </p>
+          </div>
+        </article>
+
+        <article class="stop-card">
+          <div class="status-icon pickup-upcoming" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 5v14" />
+              <path d="m6.5 13.5 5.5 5.5 5.5-5.5" />
+              <path d="M5 5h14" />
+            </svg>
+          </div>
+          <div class="stop-content">
+            <div class="stop-topline">
+              <p class="stop-type">Pickup</p>
+              <span class="status-pill">Upcoming</span>
+              <span class="chevron" aria-hidden="true">&rsaquo;</span>
+            </div>
+            <h3>Highland Dairy</h3>
+            <div class="meta-row">
+              <span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="8.5" />
+                  <path d="M12 7.5v5l3.1 1.9" />
+                </svg>
+                09:00 AM
+              </span>
+              <span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 10.3c0 5.2-7 10.2-7 10.2s-7-5-7-10.2a7 7 0 0 1 14 0Z" />
+                  <circle cx="12" cy="10.3" r="2.2" />
+                </svg>
+                88 Hillcrest Rd
+              </span>
+            </div>
+            <ul class="items-list">
+              <li>
+                <span class="fake-check"></span>
+                <span>Full Cream Milk</span>
+                <strong>25 L</strong>
+              </li>
+              <li>
+                <span class="fake-check"></span>
+                <span>Paneer</span>
+                <strong>5 kg</strong>
+              </li>
+            </ul>
+            <p class="maps-label">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 3 10 14" />
+                <path d="m21 3-7 18-4-7-7-4 18-7Z" />
+              </svg>
+              Open route in Maps
+            </p>
+          </div>
+        </article>
+
+        <article class="stop-card">
+          <div class="status-icon delivery-upcoming" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 19V5" />
+              <path d="m6.5 10.5 5.5-5.5 5.5 5.5" />
+              <path d="M5 19h14" />
+            </svg>
+          </div>
+          <div class="stop-content">
+            <div class="stop-topline">
+              <p class="stop-type">Delivery</p>
+              <span class="status-pill">Upcoming</span>
+              <span class="chevron" aria-hidden="true">&rsaquo;</span>
+            </div>
+            <h3>Cafe Aurora</h3>
+            <div class="meta-row">
+              <span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="8.5" />
+                  <path d="M12 7.5v5l3.1 1.9" />
+                </svg>
+                09:40 AM
+              </span>
+              <span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 10.3c0 5.2-7 10.2-7 10.2s-7-5-7-10.2a7 7 0 0 1 14 0Z" />
+                  <circle cx="12" cy="10.3" r="2.2" />
+                </svg>
+                3 High Street
+              </span>
+            </div>
+            <ul class="items-list">
+              <li>
+                <span class="fake-check"></span>
+                <span>Full Cream Milk</span>
+                <strong>10 L</strong>
+              </li>
+              <li>
+                <span class="fake-check"></span>
+                <span>Cream</span>
+                <strong>2 L</strong>
+              </li>
+            </ul>
+            <p class="maps-label">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 3 10 14" />
+                <path d="m21 3-7 18-4-7-7-4 18-7Z" />
+              </svg>
+              Open route in Maps
+            </p>
+          </div>
+        </article>
       </section>
     </main>
 
     <!--
-      Bottom navigation app ke main tabs dikhata hai: Home, Pickup, Deliveries, Profile.
+      Bottom navigation app ke main tabs dikhata hai: Home, Pickups, Deliveries, Profile.
       Ab yeh anchor links hain, isliye user navbar se pages ke beech move kar sakta hai.
     -->
     <nav class="bottom-nav" aria-label="Main navigation">
@@ -304,7 +464,7 @@
           <path d="M4.8 7.4 12 11.5l7.2-4.1" />
           <path d="M12 11.5V20" />
         </svg>
-        Pickup
+        Pickups
       </a>
       <a class="nav-item" href="deliveries.html">
         <svg viewBox="0 0 24 24" aria-hidden="true">
