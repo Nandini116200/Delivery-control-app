@@ -191,6 +191,8 @@ h1 {
   flex-direction: column;
   justify-content: center;
   gap: 14px;
+  color: inherit;
+  text-decoration: none;
 }
 
 /*
@@ -273,13 +275,13 @@ h1 {
 }
 
 /*
-  View all abhi sirf static text hai, but color aur weight se clickable jaisa signal deta hai.
-  Jab Deliveries page banega, isi element ko real link/button mein convert kar sakte hain.
+  View all Deliveries page ka quick link hai.
 */
 .view-all {
   color: var(--teal);
   font-size: 13px;
   font-weight: 800;
+  text-decoration: none;
 }
 
 /*
@@ -328,6 +330,16 @@ h1 {
 .progress {
   color: #8d6400;
   background: #fff3ce;
+}
+
+.delivery-upcoming {
+  color: var(--teal);
+  background: var(--teal-soft);
+}
+
+.pickup-upcoming {
+  color: #5a3d05;
+  background: var(--amber-soft);
 }
 
 /*
@@ -504,13 +516,50 @@ h1 {
   background: #f7faf9;
 }
 
+.home-page .up-next .items-list li,
+.deliveries-page .coming-up .items-list li {
+  cursor: pointer;
+}
+
+.home-page .up-next .items-list li:focus-visible,
+.deliveries-page .coming-up .items-list li:focus-visible {
+  outline: 2px solid var(--teal-soft);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.home-page .up-next .items-list li.is-checked .fake-check,
+.deliveries-page .coming-up .items-list li.is-checked .fake-check {
+  border-color: var(--teal);
+  background: var(--teal);
+}
+
+.home-page .up-next .items-list li.is-checked .fake-check::after,
+.deliveries-page .coming-up .items-list li.is-checked .fake-check::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 5px;
+  height: 9px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.home-page .up-next .items-list li.is-checked span:not(.fake-check),
+.deliveries-page .coming-up .items-list li.is-checked span:not(.fake-check) {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
 /*
-  Maps label route action ka placeholder hai. Abhi static hai, but later isko
-  Google Maps deep link se connect karenge.
+  Maps label route action Google Maps directions screen kholta hai.
 */
 .maps-label {
   margin: 0;
   color: var(--teal-deep);
+  cursor: pointer;
   font-size: 12px;
   font-weight: 800;
 }
@@ -518,6 +567,12 @@ h1 {
 .maps-label svg {
   width: 14px;
   height: 14px;
+}
+
+.maps-label:focus-visible {
+  outline: 2px solid var(--teal-soft);
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
 /*
